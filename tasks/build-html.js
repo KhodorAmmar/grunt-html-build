@@ -357,7 +357,9 @@ module.exports = function (grunt) {
                     destPath = dest;
                 }
                 else {
-                    destPath = path.join(dest, path.basename(src));
+                    var pp = src.split(path.sep);
+                    pp.shift();
+                    destPath = path.join(dest, pp.join(path.sep));
                 }
 
                 content = transformContent(grunt.file.read(src), params, dest);
